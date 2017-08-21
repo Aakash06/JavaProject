@@ -1,36 +1,45 @@
 package StreamExamples;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 class StudentData{
 
-   int studentID;
-   int age;
+  private int studentID;
+  private float marks;
+  private int age;
+  private List<StudentData> list;
 
-    StudentData(int studentID,int age){
-        this.studentID =studentID;
-        this.age= age;
+   int getStudentID() {
+        return studentID;
     }
 
-}
+    StudentData(int studentID, int age, float marks){
+        this.studentID =studentID;
+        this.marks= age;
+        this.marks= marks;
+    }
 
-public class MapToObjExamples {
+    StudentData(List<StudentData> list){
+        this.list= list;
+    }
 
-    public static void main(String[] args) {
+    long CountOfAge(List<StudentData> list){
 
-        StudentData student1 = new StudentData(1, 19);
-        StudentData student2 = new StudentData(2, 20);
-        StudentData student3 = new StudentData(3, 18);
-        StudentData student4 = new StudentData(4, 21);
+        return list.stream().filter(s->s.marks>18).mapToInt(w->w.age).count();
+    }
 
-        List<StudentData> list = Arrays.asList(student1, student2, student3, student4);
+    double averageOfMarks(List<StudentData> list,int id){
+        return list.stream().filter(n->n.studentID==id).mapToDouble(m->m.marks).average().orElse(0);
+    }
 
-        Stream<StudentData> stream = list.stream();
+    Map groupByExample(List<StudentData> list){
+        return list.stream().collect(Collectors.groupingBy(StudentData::getStudentID));
+    }
 
-        long CountOfAge = stream.filter(s->s.age>18).mapToInt(w->w.age).count();
-        System.out.println(CountOfAge);
+    Map partitionByExample(List<StudentData> list){
+        return list.stream().collect(Collectors.partitioningBy(n->n.marks>40));
     }
 
 }

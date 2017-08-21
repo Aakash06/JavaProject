@@ -3,10 +3,10 @@ package LocalDateExample;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class BirthTimeExample {
+class BirthTimeExample {
 
 
-    public String ageCalculator(int day,int month,int year){
+    String ageCalculator(int day,int month,int year){
 
         LocalDate currentDate = LocalDate.now();
         LocalDate birthDate = LocalDate.of(year,month,day);
