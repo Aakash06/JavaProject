@@ -25,10 +25,6 @@ class StudentData{
         this.list= list;
     }
 
-    long CountOfAge(List<StudentData> list){
-
-        return list.stream().filter(s->s.marks>18).mapToInt(w->w.age).count();
-    }
 
     double averageOfMarks(List<StudentData> list,int id){
         return list.stream().filter(n->n.studentID==id).mapToDouble(m->m.marks).average().orElse(0);

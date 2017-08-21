@@ -22,12 +22,7 @@ public class StudentDataTest {
     List<StudentData> list = Arrays.asList(student1, student2, student3, student4,student5,student6);
 
     StudentData studentData = new StudentData(list);
-
-    @Test
-    public void countOfAge() throws Exception {
-        assertEquals(studentData.CountOfAge(list),4,0);
-
-    }
+    
 
     @Test
     public void averageOfMarks() throws Exception{
@@ -43,5 +38,5 @@ public class StudentDataTest {
     public void partitionByExample() throws Exception{
         assertTrue((studentData.partitionByExample(list).containsKey(true)));
     }
-    
+
 }
